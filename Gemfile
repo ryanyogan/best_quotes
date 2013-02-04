@@ -1,3 +1,3 @@
 # best_quotes/Gemfile
 source :rubygems
-gem 'rulers'
+gem 'rulers', path: "../rails_api"
