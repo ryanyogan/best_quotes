@@ -1,4 +1,4 @@
-# best_quotes/config.ru
+
 require './config/application'
 
 app = BestQuotes::Application.new
@@ -8,19 +8,14 @@ use Rack::ContentType
 app.route do
   match "", "quotes#index"
   match "sub-app",
-    proc { [200, {}, ["Samual L Jackson says Motha Fucker!"]] }
+    proc { [200, {}, ["Hello, sub-app!"]] }
 
-  # Defaults
+  # default routes
   match ":controller/:id/:action"
   match ":controller/:id",
-    default: { "action" => "show" }
+    :default => { "action" => "show" }
   match ":controller",
-    default: { "action" => "index" }
+    :default => { "action" => "index" }
 end
 
-# Hmm Rack still wants us to call run, on what? 
-# How about that variable app that is pointing to a new instance
-# of the app :)
-run app
-
-
+run app # Remember in the rackup file run is called automatically, this is similar to run BestQuotes::Application.new

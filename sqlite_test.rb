@@ -1,7 +1,7 @@
 require "sqlite3"
-require "rulers/sqlite_model"
+require "nails/sqlite_model"
 
-class MyTable < Rulers::Model::SQLite; end
+class MyTable < Nails::Model::SQLite; end
 STDERR.puts MyTable.schema.inspect
 
 
